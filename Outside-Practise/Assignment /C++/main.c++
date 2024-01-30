@@ -1,5 +1,7 @@
 #include <iostream>
 #include <chrono>
+#include <fstream>
+
 
 // Recursive Fibonacci
 int fib_recursive(int n) {
@@ -31,35 +33,43 @@ int sum_of_cubes_iterative(int n) {
 }
 
 int main() {
+    std::ofstream outputFile("timing_data.txt");
+
     for (int n = 1; n <= 50; n++) {
+        std::chrono::duration<double> elapsed;
+        int result;
+
         // Measure Recursive Fibonacci
         auto start = std::chrono::high_resolution_clock::now();
-        int result = fib_recursive(n);
+        result = fib_recursive(n);
         auto end = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> elapsed = end - start;
-        std::cout << "Recursive Fibonacci of " << n << ": " << result << ", Time: " << elapsed.count() << " seconds\n";
+        elapsed = end - start;
+        outputFile << n << ", " << elapsed.count() << ", ";
 
         // Measure Iterative Fibonacci
         start = std::chrono::high_resolution_clock::now();
         result = fib_iterative(n);
         end = std::chrono::high_resolution_clock::now();
         elapsed = end - start;
-        std::cout << "Iterative Fibonacci of " << n << ": " << result << ", Time: " << elapsed.count() << " seconds\n";
+        outputFile << elapsed.count() << ", ";
 
         // Measure Recursive Sum of Cubes
         start = std::chrono::high_resolution_clock::now();
         result = sum_of_cubes_recursive(n);
         end = std::chrono::high_resolution_clock::now();
         elapsed = end - start;
-        std::cout << "Recursive Sum of Cubes of " << n << ": " << result << ", Time: " << elapsed.count() << " seconds\n";
+        outputFile << elapsed.count() << ", ";
 
         // Measure Iterative Sum of Cubes
         start = std::chrono::high_resolution_clock::now();
         result = sum_of_cubes_iterative(n);
         end = std::chrono::high_resolution_clock::now();
         elapsed = end - start;
-        std::cout << "Iterative Sum of Cubes of " << n << ": " << result << ", Time: " << elapsed.count() << " seconds\n";
+        outputFile << elapsed.count();
+
+        outputFile << std::endl;
     }
 
+    outputFile.close();
     return 0;
 }
