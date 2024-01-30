@@ -1,0 +1,6 @@
+#include <stdio.h>
+#include <time.h>
+
+// ... (Your function implementations remain the same)
+
+

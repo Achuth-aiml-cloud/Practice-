@@ -34,6 +34,14 @@ int main() {
     clock_t start, end;
     double cpu_time_used;
     int n, result;
+    FILE *outputFile;
+
+    // Open the file for writing
+    outputFile = fopen("data.txt", "w");
+    if (outputFile == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
 
     for (n = 1; n <= 50; n++) {
         // Measure Recursive Fibonacci
@@ -41,29 +49,32 @@ int main() {
         result = fib_recursive(n);
         end = clock();
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-        printf("Recursive Fibonacci of %d: %d, Time: %f seconds\n", n, result, cpu_time_used);
+        fprintf(outputFile, "%d, %f, ", n, cpu_time_used * 1000);
 
         // Measure Iterative Fibonacci
         start = clock();
         result = fib_iterative(n);
         end = clock();
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-        printf("Iterative Fibonacci of %d: %d, Time: %f seconds\n", n, result, cpu_time_used);
+        fprintf(outputFile, "%f, ", cpu_time_used * 1000);
 
         // Measure Recursive Sum of Cubes
         start = clock();
         result = sum_of_cubes_recursive(n);
         end = clock();
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-        printf("Recursive Sum of Cubes of %d: %d, Time: %f seconds\n", n, result, cpu_time_used);
+        fprintf(outputFile, "%f, ", cpu_time_used * 1000);
 
         // Measure Iterative Sum of Cubes
         start = clock();
         result = sum_of_cubes_iterative(n);
         end = clock();
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-        printf("Iterative Sum of Cubes of %d: %d, Time: %f seconds\n", n, result, cpu_time_used);
+        fprintf(outputFile, "%f\n", cpu_time_used * 1000);
     }
+
+    // Close the file
+    fclose(outputFile);
 
     return 0;
 }
