@@ -4,13 +4,13 @@
 
 
 // Recursive Fibonacci
-int fib_recursive(int n) {
+int fibRecursive(int n) {
     if (n <= 1) return n;
     return fib_recursive(n - 1) + fib_recursive(n - 2);
 }
 
 // Iterative Fibonacci
-int fib_iterative(int n) {
+int fibIterative(int n) {
     int a = 0, b = 1, c;
     if (n == 0) return a;
     for (int i = 2; i <= n; i++) {
@@ -22,13 +22,13 @@ int fib_iterative(int n) {
 }
 
 // Recursive Sum of Cubes
-int sum_of_cubes_recursive(int n) {
+int sumOfCubesRecursive(int n) {
     if (n <= 0) return 0;
     return n*n*n + sum_of_cubes_recursive(n - 1);
 }
 
-// Iterative Sum of Cubes
-int sum_of_cubes_iterative(int n) {
+
+int sumOfCubesIterative(int n) {
     return n * n * (n + 1) * (n + 1) / 4;
 }
 
@@ -39,30 +39,30 @@ int main() {
         std::chrono::duration<double> elapsed;
         int result;
 
-        // Measure Recursive Fibonacci
+        // Time for Recursive Fibonacci
         auto start = std::chrono::high_resolution_clock::now();
-        result = fib_recursive(n);
+        result = fibRecursive(n);
         auto end = std::chrono::high_resolution_clock::now();
         elapsed = end - start;
         outputFile << n << ", " << elapsed.count() << ", ";
 
-        // Measure Iterative Fibonacci
+        // Time for  Iterative Fibonacci
         start = std::chrono::high_resolution_clock::now();
-        result = fib_iterative(n);
+        result = fibIterative(n);
         end = std::chrono::high_resolution_clock::now();
         elapsed = end - start;
         outputFile << elapsed.count() << ", ";
 
-        // Measure Recursive Sum of Cubes
+        // Time for Recursive Sum of Cubes
         start = std::chrono::high_resolution_clock::now();
-        result = sum_of_cubes_recursive(n);
+        result = sumOfCubesRecursive(n);
         end = std::chrono::high_resolution_clock::now();
         elapsed = end - start;
         outputFile << elapsed.count() << ", ";
 
-        // Measure Iterative Sum of Cubes
+        // Time for Iterative Sum of Cubes
         start = std::chrono::high_resolution_clock::now();
-        result = sum_of_cubes_iterative(n);
+        result = sumOfCubesIterative(n);
         end = std::chrono::high_resolution_clock::now();
         elapsed = end - start;
         outputFile << elapsed.count();

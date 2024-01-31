@@ -1,0 +1,80 @@
+C++ language 
+
+This Graph shows the performance of different algorithms ,plotting Input Values (0 to 50) vs time taken to compile in (milli seconds)
+1. Recursive Fibonacci
+The algorithm's execution time seems to rise sharply as the input size increases. This is typical of implementations of recursive Fibonacci, with a time  complexity of 2 to the power of N this is because the recursive method re do the same calculation several times with out storing them in memory
+
+2. Iterative Fibonacci :
+This line is low and very flat, indicating that the time required increases extremely slowly—if at all—as the input size increases. The linear time complexity of iterative Fibonacci algorithms is usually O(n). However, the line's flatness indicates that the constant factors are likely quite tiny, and the processing time does not increase much for the range of input sizes displayed.
+
+3. Recursive sum of Cubes : 
+This algorithm gets a bit slower as it deals with bigger numbers, but it's still a lot faster than the recursive Fibonacci algorithm. It probably doesn't take as long as the recursive Fibonacci because its steps are simpler. Usually, for adding up cubes using recursion, we think it would take a number of steps that goes up steadily, not super fast, with the size of the problem. This is because it likely just does one simple step for each number leading up to the final number.
+
+4. IterativeSum of Cubes : 
+this line is also flat similar to the iterative fibonacci an iterative sum of cubes algorithm would typically have a line time complexity O(n) as it sums the cubes based on the standard formula upto n processing through a single loop 
+
+
+Conclusion : the Recursive fibonaci algorithm has the least performance  due to its exponential time complexity while the other remaining algorithms has better performance because of it's linear time complexity 
+
+C  Language 
+
+This graph plots input values (0 to 50) against compilation time (milliseconds) to demonstrate the performance of various algorithms.
+and for plotting the grpah we set the y limit 0 to 0.05 because all the time values are incredibly very low excpet for the Recursive fibonacci it's exponentially growing.
+
+saved the compilation time data in a text file and given the file as input in python to generate the graph with Matplotlib package .
+
+1. The magnitude of the input causes the recursive Fibonacci method to take progressively longer to complete. The steeply rising curve that appears as the input size gets closer to 50 is indicative of this. For the recursive Fibonacci sequence, the time complexity is O(2 to the power of n)
+
+2. fib iterative : Fibonacci Iterative: The iterative version of the Fibonacci sequence appears to have a time complexity that is linear or possibly constant, as indicated by the flat line near the x-axis. This suggests a time complexity of 
+�
+(
+�
+)
+O(n) or 
+�
+(
+1
+)
+O(1), respectively. Given the typical implementation of iterative Fibonacci, 
+�
+(
+�
+)
+O(n) is the expected complexity.
+
+Sum of Cubes Recursive: The time taken by the recursive sum of cubes seems to be relatively flat, suggesting that its time complexity is likely linear 
+�
+(
+�
+)
+O(n), or possibly even constant 
+�
+(
+1
+)
+O(1). However, since it's a sum of cubes, the expectation would be 
+�
+(
+�
+)
+O(n) if the implementation involves a simple loop or recursion that sums the cubes of each number up to n.
+
+Sum of Cubes Iterative: This also shows a flat line near the x-axis, which is indicative of a constant time complexity 
+�
+(
+1
+)
+O(1) or linear 
+�
+(
+�
+)
+O(n). It's more likely to be 
+�
+(
+�
+)
+O(n) if it's simply summing the cubes of each number up to n.
+
+
+
