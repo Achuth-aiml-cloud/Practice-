@@ -29,7 +29,7 @@ int main() {
 
     resultfile = fopen("results.txt", "w");
     if (resultfile == NULL) {
-        printf("Unable to open file\n");
+        printf("Unable to open fil\n");
         return 1;
     }
 
