@@ -40,13 +40,14 @@ int main() {
         finish = clock();
         cpu_time_us = ((finish - begin) * 1000000L) / CLOCKS_PER_SEC;
         fprintf(resultfile, "%d, %ld, ", val, cpu_time_us);
-        
+         printf("FibRec(%d): %d, Time: %ld us\n", val, output, cpu_time_us);
 
         begin = clock();
         output = fibonacciIter(val);
         finish = clock();
         cpu_time_us = ((finish - begin) * 1000000L) / CLOCKS_PER_SEC;
         fprintf(resultfile, "%ld, ", cpu_time_us);
+        printf("FibIter(%d): %d, Time: %ld us\n", val, output, cpu_time_us);
         
 
         begin = clock();
@@ -54,6 +55,7 @@ int main() {
         finish = clock();
         cpu_time_us = ((finish - begin) * 1000000L) / CLOCKS_PER_SEC;
         fprintf(resultfile, "%ld, ", cpu_time_us);
+        printf("CubesSumRec(%d): %d, Time: %ld us\n", val, output, cpu_time_us);
         
 
         begin = clock();
@@ -61,6 +63,7 @@ int main() {
         finish = clock();
         cpu_time_us = ((finish - begin) * 1000000L) / CLOCKS_PER_SEC;
         fprintf(resultfile, "%ld\n", cpu_time_us);
+        printf("CubesSumIter(%d): %d, Time: %ld us\n", val, output, cpu_time_us);
        
     }
 
