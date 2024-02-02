@@ -15,26 +15,26 @@ with open('results.txt', 'r') as file:
 
 df = pd.DataFrame(data)
 
-# Melt the DataFrame
+
 df_melted = df.melt(id_vars=['InputSize'], var_name='Method', value_name='Time')
 
-# Split the data into recursive and iterative methods
+
 df_rec = df_melted[df_melted['Method'].str.contains('Rec')]
 df_iter = df_melted[df_melted['Method'].str.contains('Iter')]
 
 sns.set_theme(style="whitegrid")
 
-# Create subplots for recursive and iterative methods
+
 fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(16, 6))
 
-# Plot recursive methods
+
 sns.lineplot(data=df_rec, x='InputSize', y='Time', hue='Method', style='Method', markers=True, dashes=False, ax=axes[0])
 axes[0].set_xlabel('Input')
 axes[0].set_ylabel('Time in us (microseconds)')
 axes[0].set_title('Recursive Methods')
 axes[0].set_ylim(0, 25)
 
-# Plot iterative methods
+
 sns.lineplot(data=df_iter, x='InputSize', y='Time', hue='Method', style='Method', markers=True, dashes=False, ax=axes[1])
 axes[1].set_xlabel('Input')
 axes[1].set_ylabel('Time in us (microseconds)')
